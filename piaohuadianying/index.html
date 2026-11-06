@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>飘花电影网-飘花电影网高清电影在线观看_飘花影院免费影视资源</title>
+<meta name="description" content="飘花电影网是面向影视爱好者的在线观影入口，提供高清电影、电视剧、动漫与综艺的分类浏览，可按类型、地区与年份筛选，帮助你快速找到想看的影片。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131826'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%23ffb648' stroke-width='3'/%3E%3Cpath d='M27 24l14 8-14 8z' fill='%23ffb648'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#131826;
+  --ink-2:#1c2333;
+  --paper:#f6f4ef;
+  --card:#ffffff;
+  --line:#e2ddd3;
+  --gold:#c8862a;
+  --gold-soft:#f2e2c6;
+  --text:#2a2f3a;
+  --muted:#6b7280;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--paper);
+  color:var(--text);
+  line-height:1.75;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px;}
+
+/* ---------- header ---------- */
+header.site{
+  background:var(--ink);
+  color:#f4efe6;
+  position:sticky;top:0;z-index:50;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.head-inner{
+  display:flex;align-items:center;gap:24px;
+  min-height:68px;flex-wrap:wrap;padding:10px 0;
+}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.logo-mark{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(145deg,#ffca6b,#c8862a);
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-mark svg{width:22px;height:22px;}
+.logo-text{
+  font-size:19px;font-weight:700;letter-spacing:.5px;color:#fff;
+  white-space:nowrap;
+}
+nav.main-nav{display:flex;gap:20px;flex-wrap:wrap;font-size:15px;margin-left:auto;}
+nav.main-nav a{color:#cfc8bb;padding:4px 2px;border-bottom:2px solid transparent;transition:.2s;}
+nav.main-nav a:hover{color:#fff;border-bottom-color:var(--gold);}
+
+/* ---------- hero ---------- */
+.hero{
+  background:
+    radial-gradient(circle at 82% 18%, rgba(200,134,42,.28), transparent 46%),
+    linear-gradient(160deg,#131826 0%,#1d2537 62%,#232c41 100%);
+  color:#f2ede4;
+  padding:56px 0 60px;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;right:-120px;bottom:-140px;
+  width:420px;height:420px;border-radius:50%;
+  border:1px solid rgba(255,202,107,.18);
+  box-shadow:0 0 0 46px rgba(255,202,107,.05),0 0 0 92px rgba(255,202,107,.03);
+}
+.hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:44px;align-items:center;position:relative;z-index:1;}
+.hero h1{
+  font-size:clamp(26px,3.4vw,40px);
+  line-height:1.3;font-weight:800;letter-spacing:.5px;color:#fff;
+  margin-bottom:16px;
+}
+.hero h1 .accent{color:#ffca6b;}
+.hero p.lead{font-size:16px;color:#c9c2b5;max-width:34em;}
+.hero-actions{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:999px;font-size:15px;font-weight:600;
+  transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:linear-gradient(135deg,#ffca6b,#c8862a);color:#1a1408;}
+.btn-primary:hover{filter:brightness(1.07);}
+.btn-ghost{border-color:rgba(255,255,255,.28);color:#f0e9dc;}
+.btn-ghost:hover{background:rgba(255,255,255,.08);}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;}
+.hero-tags span{
+  font-size:13px;color:#d8cfbe;padding:4px 12px;border-radius:999px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+}
+.hero-panel{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius);
+  padding:22px;
+  backdrop-filter:blur(4px);
+}
+.hero-panel h2{font-size:15px;font-weight:600;color:#ffca6b;margin-bottom:14px;letter-spacing:.5px;}
+.hero-panel ul{list-style:none;display:grid;gap:12px;}
+.hero-panel li{display:flex;gap:10px;font-size:14px;color:#d3ccbf;line-height:1.6;}
+.hero-panel li b{color:#fff;font-weight:600;}
+.dot{width:6px;height:6px;border-radius:50%;background:#ffca6b;margin-top:9px;flex-shrink:0;}
+
+/* ---------- section base ---------- */
+section{padding:56px 0;}
+.sec-head{margin-bottom:28px;}
+.sec-head .kicker{
+  font-size:13px;letter-spacing:2px;color:var(--gold);font-weight:700;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.sec-head h2{font-size:clamp(21px,2.4vw,27px);font-weight:800;color:var(--ink);letter-spacing:.3px;}
+.sec-head p{margin-top:8px;color:var(--muted);font-size:15px;max-width:46em;}
+
+/* ---------- 分类 ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.cat-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 18px;transition:.22s;
+}
+.cat-card:hover{transform:translateY(-3px);border-color:#d8c39a;box-shadow:0 12px 26px -18px rgba(19,24,38,.4);}
+.cat-icon{
+  width:40px;height:40px;border-radius:10px;background:var(--gold-soft);
+  display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+}
+.cat-icon svg{width:21px;height:21px;stroke:#a06a1a;fill:none;stroke-width:1.8;}
+.cat-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.cat-card p{font-size:13.5px;color:var(--muted);line-height:1.6;}
+
+/* ---------- 精选影片 ---------- */
+.film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.film-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:.22s;display:flex;flex-direction:column;
+}
+.film-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -22px rgba(19,24,38,.5);}
+.poster{
+  aspect-ratio:16/9;background:#1d2537;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.poster svg{width:100%;height:100%;}
+.film-body{padding:16px 18px 18px;}
+.film-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.film-meta span{
+  font-size:12px;padding:2px 9px;border-radius:999px;
+  background:#f1ece2;color:#8a6a30;border:1px solid #e6dcc8;
+}
+.film-body h3{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.film-body p{font-size:13.5px;color:var(--muted);line-height:1.65;}
+
+/* ---------- 筛选 ---------- */
+.filter-box{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:14px;align-items:end;
+}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;}
+.field select,.field input{
+  width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:9px;
+  font-size:14.5px;color:var(--text);background:#fcfbf8;font-family:inherit;
+}
+.field select:focus,.field input:focus{outline:2px solid #e7cfa0;outline-offset:1px;}
+.filter-btn{
+  padding:10px 24px;border-radius:9px;border:none;cursor:pointer;
+  background:var(--ink);color:#fff;font-size:14.5px;font-weight:600;font-family:inherit;
+  transition:.2s;height:40px;
+}
+.filter-btn:hover{background:#2a3346;}
+.filter-result{margin-top:16px;font-size:14px;color:var(--muted);}
+
+/* ---------- 正文说明 ---------- */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:start;}
+.about-body h2{font-size:clamp(20px,2.3vw,25px);font-weight:800;color:var(--ink);margin-bottom:14px;}
+.about-body p{font-size:15.5px;color:#454b57;margin-bottom:14px;}
+.about-body p b{color:var(--ink);}
+.about-aside{
+  background:linear-gradient(160deg,#1d2537,#131826);color:#e6dfd2;
+  border-radius:var(--radius);padding:24px;
+}
+.about-aside h3{font-size:15px;color:#ffca6b;margin-bottom:14px;letter-spacing:.5px;}
+.about-aside ul{list-style:none;display:grid;gap:12px;}
+.about-aside li{font-size:14px;color:#c7c0b3;line-height:1.65;display:flex;gap:10px;}
+.about-aside li b{color:#fff;}
+.about-aside .dot{margin-top:8px;}
+
+/* ---------- FAQ ---------- */
+.faq{display:grid;gap:12px;}
+details{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 20px;transition:.2s;
+}
+details[open]{border-color:#dcc79e;box-shadow:0 10px 24px -20px rgba(19,24,38,.5);}
+summary{
+  cursor:pointer;font-size:15.5px;font-weight:600;color:var(--ink);
+  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{
+  content:"+";font-size:20px;font-weight:400;color:var(--gold);line-height:1;transition:.2s;
+}
+details[open] summary::after{transform:rotate(45deg);}
+details p{margin-top:10px;font-size:14.5px;color:#4d5360;line-height:1.75;}
+
+/* ---------- footer ---------- */
+footer.site{
+  background:var(--ink);color:#b5aea1;padding:44px 0 30px;font-size:14px;
+}
+.foot-top{display:flex;gap:32px;flex-wrap:wrap;justify-content:space-between;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.09);}
+.foot-brand{max-width:340px;}
+.foot-brand .logo-text{font-size:17px;margin-bottom:10px;}
+.foot-brand p{font-size:13.5px;color:#948d80;line-height:1.7;}
+.foot-links{display:flex;gap:48px;flex-wrap:wrap;}
+.foot-col h4{font-size:14px;color:#e9e2d5;margin-bottom:12px;font-weight:600;letter-spacing:.5px;}
+.foot-col a{display:block;font-size:13.5px;color:#a49d90;margin-bottom:8px;transition:.2s;}
+.foot-col a:hover{color:#ffca6b;}
+.foot-bottom{padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px;color:#837c70;}
+.foot-bottom a{color:#a49d90;}
+.foot-bottom a:hover{color:#ffca6b;}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:30px;}
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .film-grid{grid-template-columns:repeat(2,1fr);}
+  .filter-box{grid-template-columns:1fr 1fr;}
+  .about-grid{grid-template-columns:1fr;gap:26px;}
+}
+@media (max-width:640px){
+  body{font-size:15.5px;}
+  .hero{padding:40px 0 44px;}
+  section{padding:42px 0;}
+  .head-inner{gap:12px;min-height:62px;}
+  nav.main-nav{gap:14px;font-size:14px;margin-left:0;width:100%;order:3;}
+  .cat-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .film-grid{grid-template-columns:1fr;gap:16px;}
+  .filter-box{grid-template-columns:1fr;padding:18px;}
+  .filter-btn{width:100%;}
+  .foot-links{gap:32px;}
+  .hero-actions .btn{flex:1;justify-content:center;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top" aria-label="飘花电影网首页">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.6" stroke="#1a1408" stroke-width="1.8"/><path d="M10 8.2l6 3.8-6 3.8z" fill="#1a1408"/></svg>
+      </span>
+      <span class="logo-text">飘花电影网</span>
+    </a>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#categories">影片分类</a>
+      <a href="#featured">精选推荐</a>
+      <a href="#filter">筛选查找</a>
+      <a href="#about">站点说明</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>飘花电影网</h1>
+        <p class="lead">一个面向影视爱好者的在线观影入口。把电影、电视剧、动漫与综艺按类型、地区、年份归好类，让找片这件事从翻页变成顺手一点。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#featured">
+            进入精选片单
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#1a1408" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#filter">按条件筛选</a>
+        </div>
+        <div class="hero-tags">
+          <span>高清片源</span><span>多类型浏览</span><span>地区年份筛选</span><span>电脑手机通用</span>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="今日观影提示">
+        <h2>今日观影提示</h2>
+        <ul>
+          <li><span class="dot" aria-hidden="true"></span><span><b>先定类型</b>：不确定看什么，从分类入口挑一个方向更快。</span></li>
+          <li><span class="dot" aria-hidden="true"></span><span><b>再看年份</b>：老片和新片放在一起时，年份能帮你缩小范围。</span></li>
+          <li><span class="dot" aria-hidden="true"></span><span><b>留意片长</b>：碎片时间适合剧集单集，整段空闲更适合长片。</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <section id="categories">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Categories</div>
+        <h2>按类型进入，比盲目翻页更省时间</h2>
+        <p>飘花电影网把常见的内容形态拆成四个入口，每个入口对应一种观看需求，点进去即可看到同类型的影片集合。</p>
+      </div>
+      <div class="cat-grid">
+        <article class="cat-card">
+          <div class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M9 4v3M15 4v3M9 17v3M15 17v3"/></svg></div>
+          <h3>电影</h3>
+          <p>剧情、动作、科幻、喜剧等长片为主，适合一次看完的完整故事。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M8 6v12M16 6v12"/></svg></div>
+          <h3>电视剧</h3>
+          <p>连续剧与迷你剧，按集观看，适合分多次追完的叙事节奏。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.2 2"/></svg></div>
+          <h3>动漫</h3>
+          <p>动画长片与番剧合集，画风与题材跨度大，更新节奏相对固定。</p>
+        </article>
+        <article class="cat-card">
+          <div class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18V9M9 18V5M14 18v-6M19 18v-9"/></svg></div>
+          <h3>综艺</h3>
+          <p>真人秀、访谈与竞技类节目，单期时长短，适合零散时间。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 精选 -->
+  <section id="featured">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Featured</div>
+        <h2>精选推荐：四类内容各挑一部</h2>
+        <p>下面四部作品分别来自不同类型，用来说明飘花电影网片单的组织方式——每张卡片都标注了类型、地区与年份，方便你判断是否对味。</p>
+      </div>
+      <div class="film-grid">
+        <article class="film-card">
+          <div class="poster" aria-hidden="true">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3550"/><stop offset="1" stop-color="#131826"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#g1)"/>
+              <circle cx="230" cy="52" r="34" fill="none" stroke="#ffca6b" stroke-opacity=".45" stroke-width="1.5"/>
+              <circle cx="230" cy="52" r="18" fill="#ffca6b" fill-opacity=".18"/>
+              <path d="M0 150l70-40 55 26 60-46 60 34 75-28v84H0z" fill="#1f2940"/>
+              <path d="M0 162l80-30 60 22 55-30 65 26 60-14v44H0z" fill="#172034"/>
+            </svg>
+          </div>
+          <div class="film-body">
+            <div class="film-meta"><span>科幻</span><span>内地</span><span>近期</span></div>
+            <h3>长夜之后的黎明</h3>
+            <p>以近未来城市为背景的科幻长片，节奏偏慢，适合喜欢氛围叙事的观众。</p>
+          </div>
+        </article>
+        <article class="film-card">
+          <div class="poster" aria-hidden="true">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+              <rect width="320" height="180" fill="#1a2334"/>
+              <path d="M40 140c30-50 60-50 90 0" fill="none" stroke="#f2e2c6" stroke-opacity=".4" stroke-width="1.6"/>
+              <path d="M150 140c30-70 70-70 100 0" fill="none" stroke="#ffca6b" stroke-opacity=".55" stroke-width="1.6"/>
+              <circle cx="250" cy="46" r="20" fill="#ffca6b" fill-opacity=".22"/>
+              <rect x="0" y="140" width="320" height="40" fill="#131826"/>
+            </svg>
+          </div>
+          <div class="film-body">
+            <div class="film-meta"><span>剧情</span><span>日韩</span><span>经典</span></div>
+            <h3>海边的旧信箱</h3>
+            <p>围绕一封迟到多年的信展开的家庭剧情片，台词克制，情绪靠细节累积。</p>
+          </div>
+        </article>
+        <article class="film-card">
+          <div class="poster" aria-hidden="true">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+              <rect width="320" height="180" fill="#202b40"/>
+              <g stroke="#ffca6b" stroke-opacity=".5" stroke-width="1.5" fill="none">
+                <rect x="50" y="40" width="90" height="100" rx="6"/>
+                <rect x="160" y="60" width="110" height="80" rx="6"/>
+              </g>
+              <circle cx="95" cy="90" r="18" fill="#f2e2c6" fill-opacity=".2"/>
+              <circle cx="215" cy="100" r="12" fill="#ffca6b" fill-opacity=".3"/>
+            </svg>
+          </div>
+          <div class="film-body">
+            <div class="film-meta"><span>悬疑</span><span>欧美</span><span>近期</span></div>
+            <h3>第七号房间</h3>
+            <p>多线叙事的悬疑剧集，每集收束一个线索，适合连续观看并留意伏笔。</p>
+          </div>
+        </article>
+        <article class="film-card">
+          <div class="poster" aria-hidden="true">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+              <rect width="320" height="180" fill="#172034"/>
+              <path d="M30 120q40-60 80 0t80 0 80 0" fill="none" stroke="#ffca6b" stroke-opacity=".5" stroke-width="1.8"/>
+              <circle cx="60" cy="60" r="8" fill="#f2e2c6" fill-opacity=".5"/>
+              <circle cx="120" cy="46" r="5" fill="#ffca6b" fill-opacity=".6"/>
+              <circle cx="200" cy="58" r="7" fill="#f2e2c6" fill-opacity=".4"/>
+              <rect x="0" y="120" width="320" height="60" fill="#131826"/>
+            </svg>
+          </div>
+          <div class="film-body">
+            <div class="film-meta"><span>动画</span><span>内地</span><span>合家欢</span></div>
+            <h3>会飞的纸灯笼</h3>
+            <p>以传统节庆为灵感的动画长片，画面色彩明亮，适合全家一起观看。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 筛选 -->
+  <section id="filter">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Find</div>
+        <h2>按类型、地区与年份缩小范围</h2>
+        <p>当片单越来越长，直接筛选比逐页浏览更高效。选择条件后点击查找，下方会给出对应的提示与结果数。</p>
+      </div>
+      <form class="filter-box" id="filterForm" onsubmit="return false;">
+        <div class="field">
+          <label for="fType">类型</label>
+          <select id="fType">
+            <option value="全部">全部</option>
+            <option>电影</option>
+            <option>电视剧</option>
+            <option>动漫</option>
+            <option>综艺</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fRegion">地区</label>
+          <select id="fRegion">
+            <option value="全部">全部</option>
+            <option>内地</option>
+            <option>港台</option>
+            <option>日韩</option>
+            <option>欧美</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fYear">年份</label>
+          <select id="fYear">
+            <option value="全部">全部</option>
+            <option>近期</option>
+            <option>经典</option>
+            <option>更早</option>
+          </select>
+        </div>
+        <button class="filter-btn" type="button" id="filterBtn">查找影片</button>
+      </form>
+      <p class="filter-result" id="filterResult" aria-live="polite">尚未设置筛选条件，当前展示全部片单。</p>
+    </div>
+  </section>
+
+  <!-- 说明 -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-body">
+          <h2>为什么把飘花电影网做成分类优先的入口</h2>
+          <p>多数人打开影视站时并不知道自己要看的片名，只知道想看什么感觉。所以<b>飘花电影网</b>把首页的第一层信息放在类型上，而不是堆砌大量海报。类型决定了观看节奏：电影是一次性投入，剧集要分多次，综艺随时可断。</p>
+          <p>第二层信息是地区与年份。同样的类型，不同地区在叙事习惯和画面上差别明显，年份则帮助你区分新片与老片。把这三层条件放在一起，一次筛选就能把范围从几百部压到几十部，之后再看简介判断是否值得打开。</p>
+          <p>页面本身尽量轻量：不使用自动播放、不弹窗、不打断阅读。片单以静态卡片呈现，标题、类型、地区与年份一眼可见。对于只想快速找片的人来说，<b>飘花电影网</b>的价值在于减少犹豫，而不是增加刺激。</p>
+        </div>
+        <aside class="about-aside" aria-label="使用建议">
+          <h3>使用建议</h3>
+          <ul>
+            <li><span class="dot" aria-hidden="true"></span><span><b>先选类型</b>，再选地区，最后用年份收口，顺序反过来容易越筛越乱。</span></li>
+            <li><span class="dot" aria-hidden="true"></span><span><b>看简介</b>时重点留意节奏描述，动作片和文艺片的观看状态完全不同。</span></li>
+            <li><span class="dot" aria-hidden="true"></span><span><b>收藏入口</b>：把常用分类页加入浏览器书签，下次打开少走两步。</span></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">FAQ</div>
+        <h2>访问飘花电影网前的常见疑问</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>飘花电影网主要收录哪些内容？</summary>
+          <p>以电影、电视剧、动漫与综艺四类为主，页面按类型、地区与年份组织片单，方便按条件查找，而不是只靠片名搜索。</p>
+        </details>
+        <details>
+          <summary>没有明确想看的片名怎么办？</summary>
+          <p>从分类入口挑一个类型，再用筛选区的地区与年份进一步缩小范围。若只是想随便看看，可以直接参考精选推荐的四部作品。</p>
+        </details>
+        <details>
+          <summary>页面在手机上好用吗？</summary>
+          <p>导航、卡片与筛选控件都按小屏重新排列，字号与间距适配手机阅读，竖屏下片单会转为单列，避免横向挤压。</p>
+        </details>
+        <details>
+          <summary>片单信息会持续补充吗？</summary>
+          <p>分类与推荐位会随内容调整更新，卡片上的类型、地区与年份标注会一并维护，方便你判断作品的新旧与风格。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="logo-text">飘花电影网</div>
+        <p>分类优先的影视入口，帮助你在电影、电视剧、动漫与综艺之间快速找到想看的作品。</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>内容分类</h4>
+          <a href="#categories">电影</a>
+          <a href="#categories">电视剧</a>
+          <a href="#categories">动漫</a>
+          <a href="#categories">综艺</a>
+        </div>
+        <div class="foot-col">
+          <h4>站点</h4>
+          <a href="#featured">精选推荐</a>
+          <a href="#filter">条件筛选</a>
+          <a href="#about">站点说明</a>
+          <a href="#faq">常见问题</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>飘花电影网 · 影视分类浏览入口</span>
+      <span><a href="#top">返回顶部</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('filterBtn');
+  var out = document.getElementById('filterResult');
+  var type = document.getElementById('fType');
+  var region = document.getElementById('fRegion');
+  var year = document.getElementById('fYear');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var t = type.value, r = region.value, y = year.value;
+    var parts = [];
+    if(t !== '全部') parts.push(t);
+    if(r !== '全部') parts.push(r);
+    if(y !== '全部') parts.push(y);
+    if(parts.length === 0){
+      out.textContent = '尚未设置筛选条件，当前展示全部片单。';
+      return;
+    }
+    out.textContent = '已按「' + parts.join(' · ') + '」筛选，正在为你匹配对应的影片。';
+  });
+})();
+</script>
+
+</body>
+  </html>
