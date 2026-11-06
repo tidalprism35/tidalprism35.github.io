@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>虎扑nba-NBA比赛讨论_虎扑nba社区热点与球员动态</title>
+<meta name="description" content="虎扑nba社区聚焦NBA比赛讨论、球员表现与球队动态，汇集赛后热议、交易流言和经典回顾，呈现步行街式的球迷观点与实时交流入口。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c8102e'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Cpath d='M15 32h34M32 15v34M21 21c7 6 7 16 0 22M43 21c-7 6-7 16 0 22' stroke='%23fff' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --red:#c8102e;
+  --red-deep:#9c0b23;
+  --ink:#1b1d22;
+  --ink-2:#3d424b;
+  --mute:#6d7480;
+  --line:#e6e8ec;
+  --bg:#f7f7f5;
+  --card:#ffffff;
+  --gold:#e8b04b;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:16px;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{max-width:100%;display:block;}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px;}
+
+/* 页头 */
+header.site{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+}
+.head-inner{
+  display:flex;align-items:center;gap:22px;
+  min-height:66px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.3px;color:var(--ink);}
+.brand svg{width:34px;height:34px;flex:none;}
+.brand em{font-style:normal;color:var(--red);}
+nav.main{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap;}
+nav.main a{
+  padding:6px 12px;border-radius:8px;font-size:14.5px;color:var(--ink-2);font-weight:500;
+}
+nav.main a:hover{background:#f2f3f5;color:var(--red);}
+
+/* 首屏 */
+.hero{
+  background:linear-gradient(160deg,#1b1d22 0%,#2b2f38 55%,#3a1f24 100%);
+  color:#fff;
+  padding:44px 0 40px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;right:-90px;top:-80px;width:340px;height:340px;
+  border-radius:50%;border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 0 0 60px rgba(255,255,255,.04);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center;position:relative;z-index:2;}
+.tagline{
+  display:inline-block;font-size:13px;letter-spacing:1.5px;color:#ffd9a0;
+  border:1px solid rgba(255,217,160,.45);border-radius:99px;padding:2px 12px;margin-bottom:16px;
+}
+h1{
+  font-size:40px;line-height:1.2;margin:0 0 14px;font-weight:800;letter-spacing:.5px;
+}
+h1 span{color:var(--gold);}
+.hero p.lead{
+  font-size:15.5px;color:#d5d8de;margin:0 0 24px;max-width:520px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 20px;border-radius:9px;font-size:15px;font-weight:600;
+  transition:.18s;
+}
+.btn-primary{background:var(--red);color:#fff;}
+.btn-primary:hover{background:#e0132f;}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);}
+.btn-ghost:hover{background:rgba(255,255,255,.18);}
+.btn[aria-disabled="true"]{cursor:default;opacity:.85;pointer-events:none;}
+
+/* 记分牌卡片 */
+.scorecard{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;padding:18px 20px;backdrop-filter:blur(2px);
+}
+.scorecard h2{font-size:13px;letter-spacing:1px;color:#ffd9a0;margin:0 0 12px;font-weight:600;}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.14);font-size:14.5px;}
+.score-row:last-child{border-bottom:none;}
+.score-row b{font-size:17px;font-variant-numeric:tabular-nums;}
+.score-row .win{color:var(--gold);}
+.score-note{font-size:12px;color:#a9aeb8;margin-top:10px;}
+
+/* 主体 */
+main{padding:38px 0 10px;}
+.section-head{display:flex;align-items:baseline;gap:12px;margin:0 0 18px;}
+.section-head h2{font-size:22px;margin:0;font-weight:800;}
+.section-head span{font-size:13px;color:var(--mute);}
+.divider{height:1px;background:var(--line);margin:38px 0;border:none;}
+
+/* 热点列表 */
+.hot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:20px;transition:.18s;
+}
+.card:hover{border-color:#cfd3da;box-shadow:0 6px 18px rgba(27,29,34,.06);}
+.card .kicker{font-size:12px;color:var(--red);font-weight:700;letter-spacing:.5px;margin-bottom:8px;}
+.card h3{font-size:17px;margin:0 0 8px;line-height:1.45;font-weight:700;}
+.card p{font-size:14px;color:var(--ink-2);margin:0 0 12px;}
+.meta{font-size:12.5px;color:var(--mute);display:flex;gap:12px;flex-wrap:wrap;}
+
+/* 讨论区 */
+.discuss{display:grid;grid-template-columns:1.7fr 1fr;gap:22px;}
+.thread{
+  background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+}
+.thread-item{
+  display:flex;gap:14px;padding:15px 20px;border-bottom:1px solid var(--line);
+}
+.thread-item:last-child{border-bottom:none;}
+.thread-item .num{
+  flex:none;width:24px;height:24px;border-radius:6px;background:#f2f3f5;color:var(--mute);
+  font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;
+}
+.thread-item.hot .num{background:#fdecef;color:var(--red);}
+.thread-item h3{font-size:15.5px;margin:0 0 4px;font-weight:600;line-height:1.5;}
+.thread-item p{font-size:13.5px;color:var(--mute);margin:0;}
+.side-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;}
+.side-card h3{font-size:16px;margin:0 0 14px;font-weight:800;}
+.choice{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-bottom:1px dashed var(--line);}
+.choice:last-of-type{border-bottom:none;}
+.choice b{color:var(--red);font-variant-numeric:tabular-nums;}
+.side-card .tip{font-size:12.5px;color:var(--mute);margin-top:12px;line-height:1.7;}
+
+/* 球员动态 */
+.players{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.player{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;text-align:left;}
+.avatar{
+  width:46px;height:46px;border-radius:50%;background:#f2f3f5;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);
+  font-size:16px;margin-bottom:10px;border:1px solid var(--line);
+}
+.player h3{font-size:15.5px;margin:0 0 2px;font-weight:700;}
+.player .role{font-size:12px;color:var(--mute);margin-bottom:8px;}
+.player p{font-size:13.5px;color:var(--ink-2);margin:0;}
+
+/* 搜索 */
+.search-band{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;
+}
+.search-band .txt{flex:1;min-width:200px;}
+.search-band h2{font-size:18px;margin:0 0 4px;font-weight:800;}
+.search-band p{font-size:13.5px;color:var(--mute);margin:0;}
+.search-form{display:flex;gap:8px;flex:1;min-width:260px;}
+.search-form input{
+  flex:1;padding:10px 14px;border:1px solid var(--line);border-radius:9px;
+  font-size:14.5px;font-family:inherit;outline:none;color:var(--ink);background:#fafafa;
+}
+.search-form input:focus{border-color:var(--red);background:#fff;}
+.search-form button{
+  padding:10px 20px;border:none;border-radius:9px;background:var(--red);color:#fff;
+  font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;
+}
+.search-form button:hover{background:var(--red-deep);}
+#searchResult{flex-basis:100%;font-size:13.5px;color:var(--ink-2);margin:0;}
+
+/* 经典回顾 */
+.retro{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.retro-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;gap:18px;align-items:flex-start;}
+.retro-card .yr{
+  flex:none;font-size:26px;font-weight:800;color:var(--red);line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+.retro-card h3{font-size:16px;margin:0 0 6px;font-weight:700;}
+.retro-card p{font-size:13.5px;color:var(--ink-2);margin:0;}
+
+/* 页尾 */
+footer.site{
+  background:#1b1d22;color:#b9bec7;margin-top:48px;padding:34px 0 26px;font-size:13.5px;
+}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:28px;}
+.foot-brand{display:flex;align-items:center;gap:9px;color:#fff;font-weight:800;font-size:16.5px;margin-bottom:10px;}
+.foot-brand svg{width:28px;height:28px;}
+footer h4{font-size:13px;color:#fff;margin:0 0 10px;letter-spacing:.5px;}
+footer ul{list-style:none;margin:0;padding:0;}
+footer li{margin-bottom:7px;}
+footer a:hover{color:#fff;}
+.copyright{border-top:1px solid #2f333b;margin-top:26px;padding-top:16px;font-size:12.5px;color:#7d838d;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:26px;}
+  h1{font-size:32px;}
+  .hot-grid{grid-template-columns:1fr 1fr;}
+  .discuss{grid-template-columns:1fr;}
+  .players{grid-template-columns:1fr 1fr;}
+  .retro{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:620px){
+  body{font-size:15.5px;}
+  .head-inner{padding:10px 0;gap:10px;}
+  nav.main{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;}
+  nav.main a{white-space:nowrap;padding:6px 10px;font-size:14px;}
+  h1{font-size:28px;}
+  .hero{padding:32px 0 30px;}
+  .hot-grid{grid-template-columns:1fr;}
+  .players{grid-template-columns:1fr;}
+  .retro-card{flex-direction:column;gap:8px;}
+  .search-band{padding:18px;}
+  .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top" aria-label="虎扑nba 首页">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#c8102e"/>
+        <circle cx="32" cy="32" r="17" fill="none" stroke="#fff" stroke-width="3"/>
+        <path d="M15 32h34M32 15v34M21 21c7 6 7 16 0 22M43 21c-7 6-7 16 0 22" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>虎扑<em>nba</em></span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#hot">赛后热议</a>
+      <a href="#discuss">步行街讨论</a>
+      <a href="#players">球员动态</a>
+      <a href="#retro">经典回顾</a>
+      <a href="#search">搜索话题</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tagline">NBA · 球迷讨论社区</span>
+      <h1>虎扑nba</h1>
+      <p class="lead">比赛结束后的第一时间，这里是球迷复盘回合、争论战术、评价球员的地方。虎扑nba把当日焦点、球队近况与经典片段集中在一页，方便你快速进入讨论。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#discuss">进入讨论区</a>
+        <a class="btn btn-ghost" href="#hot">看今日热议</a>
+      </div>
+    </div>
+    <aside class="scorecard" aria-label="近期焦点对阵示意">
+      <h2>近期焦点对阵</h2>
+      <div class="score-row"><span>西部强强对话</span><b class="win">焦点</b></div>
+      <div class="score-row"><span>东部榜首之争</span><b>热议</b></div>
+      <div class="score-row"><span>背靠背轮换观察</span><b>关注</b></div>
+      <div class="score-row"><span>新秀首季表现</span><b>讨论</b></div>
+      <p class="score-note">对阵与比分随赛程变化，以官方赛果为准。</p>
+    </aside>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section id="hot" aria-labelledby="hot-title">
+    <div class="section-head">
+      <h2 id="hot-title">今日赛后热议</h2>
+      <span>围绕比赛结果与关键回合展开</span>
+    </div>
+    <div class="hot-grid">
+      <article class="card">
+        <div class="kicker">比赛复盘</div>
+        <h3>末节换防调整改变了什么</h3>
+        <p>虎扑nba球迷最常争论的是防守策略：换防后谁去补位，弱侧是否收缩。复盘时把回合拆开看，比只盯数据更容易达成共识。</p>
+        <div class="meta"><span>赛后讨论</span><span>战术视角</span></div>
+      </article>
+      <article class="card">
+        <div class="kicker">球员表现</div>
+        <h3>高使用率下的效率取舍</h3>
+        <p>当核心球员出手集中，命中率波动会被放大。讨论中常见的分歧是：该让他继续持球，还是把回合交回体系。</p>
+        <div class="meta"><span>数据观察</span><span>球迷观点</span></div>
+      </article>
+      <article class="card">
+        <div class="kicker">球队动态</div>
+        <h3>轮换名单的细微变化</h3>
+        <p>替补出场时间往往比首发更能说明教练意图。虎扑nba的赛后帖里，轮换变化常被单独拎出来讨论。</p>
+        <div class="meta"><span>阵容观察</span><span>教练思路</span></div>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="discuss" aria-labelledby="discuss-title">
+    <div class="section-head">
+      <h2 id="discuss-title">步行街讨论</h2>
+      <span>把观点摆上台面，用回合说话</span>
+    </div>
+    <div class="discuss">
+      <div class="thread">
+        <div class="thread-item hot">
+          <div class="num">1</div>
+          <div>
+            <h3>关键球该不该交给持球大核单打？</h3>
+            <p>支持方强调错位优势，反对方担心协防夹击后的出球质量。</p>
+          </div>
+        </div>
+        <div class="thread-item hot">
+          <div class="num">2</div>
+          <div>
+            <h3>三分命中率回落是手感还是出手选择</h3>
+            <p>空位比例、接球投与持球投的差异，是判断回落原因的第一手材料。</p>
+          </div>
+        </div>
+        <div class="thread-item">
+          <div class="num">3</div>
+          <div>
+            <h3>防守端的中锋下沉与换防之争</h3>
+            <p>下沉保篮板，换防限制外线，两种选择各有利弊，取决于对手配置。</p>
+          </div>
+        </div>
+        <div class="thread-item">
+          <div class="num">4</div>
+          <div>
+            <h3>年轻球员的成长曲线怎么评估</h3>
+            <p>看得分不如看决策速度。虎扑nba的老球迷更愿意谈阅读比赛的能力。</p>
+          </div>
+        </div>
+        <div class="thread-item">
+          <div class="num">5</div>
+          <div>
+            <h3>交易流言该如何看待</h3>
+            <p>流言阶段信息不完整，讨论时标注消息来源，比抢先下结论更有价值。</p>
+          </div>
+        </div>
+      </div>
+      <aside class="side-card" aria-label="社区讨论热度侧栏">
+        <h3>讨论热度</h3>
+        <div class="choice"><span>战术复盘</span><b>高</b></div>
+        <div class="choice"><span>球员评价</span><b>高</b></div>
+        <div class="choice"><span>交易流言</span><b>中</b></div>
+        <div class="choice"><span>经典回顾</span><b>中</b></div>
+        <p class="tip">热度随比赛日变化。虎扑nba的讨论更看重论据，发帖时附上回合截图或数据来源，更容易得到认真回复。</p>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="players" aria-labelledby="players-title">
+    <div class="section-head">
+      <h2 id="players-title">球员动态观察</h2>
+      <span>关注状态起伏与角色变化</span>
+    </div>
+    <div class="players">
+      <article class="player">
+        <div class="avatar">后</div>
+        <h3>后场核心</h3>
+        <div class="role">持球与组织</div>
+        <p>回合占有率上升时，助攻失误比是关键观察点。</p>
+      </article>
+      <article class="player">
+        <div class="avatar">锋</div>
+        <h3>锋线主力</h3>
+        <div class="role">攻防两端</div>
+        <p>对位强度决定其进攻效率，换防能力影响球队上限。</p>
+      </article>
+      <article class="player">
+        <div class="avatar">内</div>
+        <h3>内线支柱</h3>
+        <div class="role">护框与篮板</div>
+        <p>挡拆后的顺下时机与终结手感，常被单独讨论。</p>
+      </article>
+      <article class="player">
+        <div class="avatar">新</div>
+        <h3>新秀轮换</h3>
+        <div class="role">成长观察</div>
+        <p>出场时间不稳定，评价需拉长周期，避免单场定论。</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="retro" aria-labelledby="retro-title">
+    <div class="section-head">
+      <h2 id="retro-title">经典回顾</h2>
+      <span>老比赛里的新问题</span>
+    </div>
+    <div class="retro">
+      <article class="retro-card">
+        <div class="yr">G7</div>
+        <div>
+          <h3>抢七之战的关键防守回合</h3>
+          <p>回看抢七录像时，虎扑nba球迷常把注意力放在最后两分钟的防守站位上，而不是绝杀本身。</p>
+        </div>
+      </article>
+      <article class="retro-card">
+        <div class="yr">OT</div>
+        <div>
+          <h3>加时赛的体能分配</h3>
+          <p>加时赛往往暴露轮换深度问题，谁还能保持防守脚步，比谁投进关键球更值得复盘。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="search" aria-labelledby="search-title">
+    <div class="search-band">
+      <div class="txt">
+        <h2 id="search-title">搜索话题</h2>
+        <p>输入球队、球员或战术关键词，查找本页收录的讨论方向。</p>
+      </div>
+      <form class="search-form" id="searchForm" role="search">
+        <input type="search" id="searchInput" placeholder="如：三分、换防、抢七" aria-label="搜索话题关键词">
+        <button type="submit">搜索</button>
+      </form>
+      <p id="searchResult" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section aria-labelledby="about-title">
+    <div class="section-head">
+      <h2 id="about-title">关于这个页面</h2>
+    </div>
+    <p style="font-size:15px;color:var(--ink-2);max-width:820px;margin:0;">
+      虎扑nba是一个围绕NBA比赛与球迷讨论的主题页面，内容按赛后复盘、步行街讨论、球员动态与经典回顾四类组织。所有观点性表述均来自球迷讨论的常见角度，具体赛果、数据与交易信息以官方发布为准。页面不提供赛事直播或投注服务，讨论中请尊重他人观点，注明消息来源。
+    </p>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#c8102e"/>
+            <circle cx="32" cy="32" r="17" fill="none" stroke="#fff" stroke-width="3"/>
+            <path d="M15 32h34M32 15v34M21 21c7 6 7 16 0 22M43 21c-7 6-7 16 0 22" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span>虎扑nba</span>
+        </div>
+        <p style="margin:0;max-width:340px;">聚焦NBA比赛讨论与球迷观点，把回合、数据与判断放在一起看。</p>
+      </div>
+      <div>
+        <h4>内容分区</h4>
+        <ul>
+          <li><a href="#hot">今日赛后热议</a></li>
+          <li><a href="#discuss">步行街讨论</a></li>
+          <li><a href="#players">球员动态观察</a></li>
+          <li><a href="#retro">经典回顾</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快捷入口</h4>
+        <ul>
+          <li><a href="#search">搜索话题</a></li>
+          <li><a href="#about-title">关于这个页面</a></li>
+          <li><a href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none;">下载</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>虎扑nba · 球迷讨论主题页</span>
+      <span>内容以公开赛果与讨论角度为依据</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('searchForm');
+  var input = document.getElementById('searchInput');
+  var out = document.getElementById('searchResult');
+  var topics = [
+    {k:['三分','投篮','手感'], t:'三分命中率回落是手感还是出手选择——见步行街讨论第2条。'},
+    {k:['换防','防守','下沉'], t:'防守端的中锋下沉与换防之争——见步行街讨论第3条。'},
+    {k:['抢七','加时','关键球'], t:'抢七之战的关键防守回合与加时体能分配——见经典回顾。'},
+    {k:['轮换','替补','阵容'], t:'轮换名单的细微变化——见今日赛后热议第三条。'},
+    {k:['新秀','年轻','成长'], t:'年轻球员的成长曲线怎么评估——见步行街讨论第4条。'},
+    {k:['交易','流言'], t:'交易流言该如何看待——见步行街讨论第5条。'},
+    {k:['战术','复盘','回合'], t:'末节换防调整改变了什么——见今日赛后热议第一条。'}
+  ];
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = (input.value || '').trim();
+    if(!q){
+      out.textContent = '请输入关键词，例如：三分、换防、抢七。';
+      return;
+    }
+    var hit = topics.filter(function(item){
+      return item.k.some(function(k){ return q.indexOf(k) !== -1 || k.indexOf(q) !== -1; });
+    });
+    if(hit.length){
+      out.textContent = hit.map(function(h){ return h.t; }).join(' ');
+    }else{
+      out.textContent = '暂未找到与“' + q + '”直接相关的话题，可尝试：三分、换防、轮换、抢七。';
+    }
+  });
+})();
+</script>
+</body>
+</html>
